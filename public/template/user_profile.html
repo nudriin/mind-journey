@@ -1,0 +1,215 @@
+<?php
+require_once __DIR__ . "/../Helper/ImageHelper.php";
+require_once __DIR__ . "/../../vendor/autoload.php";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?= $model['title'] ?>
+    </title>
+    <link rel="stylesheet" href="http://localhost/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="http://localhost/images/happy.png">
+    <!-- <link rel="stylesheet" href="http://1291-114-10-143-235.ngrok-free.app/css/styles.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Lilita+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,700;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+    </style>
+    <!-- Alpine js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="text-abu font-poppins">
+    <!-- Navigation -->
+    <nav class="" x-data="{navOpen : true}">
+        <div class="fixed top-0 left-0 right-0 mx-auto bg-biru items-center py-4 px-4 sm:hidden">
+            <div class="flex justify-between">
+                <div class="flex items-center gap-3">
+                    <img src="<?= getImage(" Nav Logo.svg") ?>">
+                    <a href="/" class="font-rubik text-white">MindJourney</a>
+                </div>
+                <img src="<?= getImage(" toggle.svg") ?>" @click="navOpen = !navOpen" class="sm:hidden">
+            </div>
+        </div>
+        <div x-show="navOpen" x-transition:enter="transition duration-1000"
+            x-transition:enter-end="transform translate-x-0" x-transition:leave="transition duration-1000"
+            x-transition:leave-start="transform -translate-x-0" x-transition:leave-end="transform -translate-x-full"
+            class="fixed top-0 left-0 h-screen w-64 z-50">
+            <div class="bg-dark-white h-full px-4 py-4">
+                <ul class="py-4 space-y-3">
+                    <li>
+                        <a href="/"
+                            class="flex items-center space-x-2 px-3 group w-full text-center rounded-xl py-2 font-rubik font-medium hover:bg-biru hover:text-dark-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-5 h-5">
+                                <path fill-rule="evenodd"
+                                    d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Beranda</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/user/profile"
+                            class="flex items-center space-x-2 px-3 group w-full text-center rounded-xl py-2 font-rubik font-medium hover:bg-biru hover:text-dark-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-5 h-5">
+                                <path fill-rule="evenodd"
+                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-5.5-2.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM10 12a5.99 5.99 0 00-4.793 2.39A6.483 6.483 0 0010 16.5a6.483 6.483 0 004.793-2.11A5.99 5.99 0 0010 12z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Profil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/user/diary"
+                            class="flex items-center space-x-2 px-3 group w-full text-center rounded-xl py-2 font-rubik font-medium hover:bg-biru hover:text-dark-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-5 h-5">
+                                <path fill-rule="evenodd"
+                                    d="M4.5 2A1.5 1.5 0 003 3.5v13A1.5 1.5 0 004.5 18h11a1.5 1.5 0 001.5-1.5V7.621a1.5 1.5 0 00-.44-1.06l-4.12-4.122A1.5 1.5 0 0011.378 2H4.5zm2.25 8.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5zm0 3a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Diary</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/user/post-diary"
+                            class="flex items-center space-x-2 px-3 group w-full text-center rounded-xl py-2 font-rubik font-medium hover:bg-biru hover:text-dark-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-5 h-5">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Tulis Diary</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/user/password"
+                            class="flex items-center space-x-2 px-3 group w-full text-center rounded-xl py-2 font-rubik font-medium hover:bg-biru hover:text-dark-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-5 h-5">
+                                <path fill-rule="evenodd"
+                                    d="M8 7a5 5 0 113.61 4.804l-1.903 1.903A1 1 0 019 14H8v1a1 1 0 01-1 1H6v1a1 1 0 01-1 1H3a1 1 0 01-1-1v-2a1 1 0 01.293-.707L8.196 8.39A5.002 5.002 0 018 7zm5-3a.75.75 0 000 1.5A1.5 1.5 0 0114.5 7 .75.75 0 0016 7a3 3 0 00-3-3z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Ganti password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/user/logout"
+                            class="flex items-center space-x-2 px-3 group w-full text-center rounded-xl py-2 font-rubik font-medium bg-biru text-dark-white hover:bg-red-600 hover:text-dark-white">
+                            <span>Logout</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+    </nav>
+    <!-- dashboard -->
+    <section class="p-4 md:ml-64">
+
+        <div class="container mx-auto px-4 py-4 lg:px-20 lg:py-10">
+            <div class="flex items-center justify-center">
+                <div class="w-3/4 lg:w-2/4">
+                    <h1 class="font-rubik font-medium text-4xl text-center mb-4 mt-12">Profil</h1>
+                </div>
+            </div>
+            <?php if (isset($model['error'])) { ?>
+            <div class="w-full lg:w-9/12 mx-auto">
+                <div x-show="open"
+                    class="flex flex-row bg-red-600 rounded-md opacity-50 py-3 px-5 items-center justify-between"
+                    x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
+                    x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90">
+                    <h1 class="text-white text-lg">
+                        <?= $model['error'] ?>
+                    </h1>
+                    <button @click="open = !open"
+                        class="border-2 border-inherit text-white py-2 px-4 rounded-full">X</button>
+                </div>
+            </div>
+            <?php } ?>
+
+            <!-- card -->
+            <div class="p-4 w-full">
+                <div class="h-full lg:w-9/12 mx-auto border-2 border-abu rounded-lg overflow-hidden">
+                    <div class="grid grid-cols-12 items-center justify-center p-4 gap-4">
+                        <div class="relative col-span-12 mx-auto text-center mb-5">
+                            <!-- <div class="relative"> -->
+                            <img src="https://dummyimage.com/300x300/bababa/ffffff" alt="" id="profile_img"
+                                class="object-cover object-center h-48 w-48 border-4 border-abu rounded-full">
+                            <div id="upload"
+                                style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; line-height: 33px; text-align: center; border-radius: 50%; overflow: hidden; cursor: pointer;">
+                                <input type="file" name="picture" id="picture" required style="position: absolute; transform: scale(2); opacity: 0;">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="w-8 h-8">
+                                    <path d="M12 9a3.75 3.75 0 100 7.5A3.75 3.75 0 0012 9z" />
+                                    <path fill-rule="evenodd"
+                                        d="M9.344 3.071a49.52 49.52 0 015.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 01-3 3h-15a3 3 0 01-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 001.11-.71l.822-1.315a2.942 2.942 0 012.332-1.39zM6.75 12.75a5.25 5.25 0 1110.5 0 5.25 5.25 0 01-10.5 0zm12-1.5a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div id="cancel" style="position: absolute; bottom: 0; left: 0; width: 32px; height: 32px; line-height: 33px; text-align: center; border-radius: 50%; overflow: hidden; cursor: pointer; display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="w-8 h-8">
+                                    <path fill-rule="evenodd"
+                                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+                                        clip-rule="evenodd" />
+                                </svg>
+
+                            </div>
+                        </div>
+                        <div class="col-span-12 border-2 border-abu p-3 rounded-lg w-full overflow-hidden">
+                            <p><?=$model['user']->email?></p>
+                        </div>
+                        <form action="/user/profile" method="post" class="col-span-12 overflow-hidden"
+                            enctype="multipart/form-data">
+                            <div class="border-2 border-abu p-3 rounded-lg w-full mb-4">
+                                <input type="text" value="<?=$model['user']->name?>" name="name" required>
+                            </div>
+                            <div>
+                                <button type="submit"
+                                    class="font-semibold text-dark-white text-center bg-biru hover:bg-green-600 transition duration-200 ease-in p-2 rounded-lg text-xl w-full">Simpan</button>
+                            </div>
+                        </form>
+                        <script type="text/javascript">
+                            document.getElementById("picture").onchange = function () {
+                                document.getElementById("profile_img").src = URL.createObjectURL(picture.files[0]);
+                                document.getElementById("cancel").style.display = "block";
+
+                                document.getElementById("upload").style.display = "none";
+                            }
+
+                            var userImg = document.getElementById('profile_img').src;
+                            document.getElementById("cancel").onclick = function(){
+                                document.getElementById('profile_img').src=userImg;
+                                document.getElementById("cancel").style.display = "none";
+
+                                document.getElementById("upload").style.display = "block";
+                            }
+
+                        </script>
+
+                        <!-- <div class="col-span-12">
+                        <a href="">
+                            <div
+                                class="border-2 border-abu p-2 rounded-lg bg-biru text-white transition duration-200 ease-in">
+                                <p class="text-center text-xl">Tambah Artikel</p>
+                            </div>
+                        </a>
+                    </div> -->
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+
+</html>

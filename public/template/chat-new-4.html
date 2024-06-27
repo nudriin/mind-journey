@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Box</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .chat-box {
+            width: 300px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 15px;
+        }
+
+        .message.sender {
+            align-self: flex-end;
+        }
+
+        .message.receiver {
+            align-self: flex-start;
+        }
+
+        .message p {
+            background-color: #e0e0e0;
+            padding: 8px;
+            border-radius: 5px;
+            margin: 0;
+            display: inline-block;
+        }
+
+        .message.sender p {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .input-box {
+            padding: 10px;
+            background-color: #fff;
+            border-top: 1px solid #ccc;
+            display: flex;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 8px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-box">
+        <div class="chat-header">Chat Box</div>
+        <div class="chat-body" id="chatBody">
+            <div class="message sender">
+                <p>Hello, how can I help you?</p>
+            </div>
+            <div class="message receiver">
+                <p>Hi! I have a question.</p>
+            </div>
+            <!-- Add more messages as needed -->
+        </div>
+        <div class="input-box">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <input type="submit" value="Send" onclick="sendMessage()">
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var messageInput = document.getElementById("messageInput").value;
+            var chatBody = document.getElementById("chatBody");
+
+            if (messageInput.trim() !== "") {
+                var newMessage = document.createElement("div");
+                newMessage.className = "message sender";
+                newMessage.innerHTML = '<p>' + messageInput + '</p>';
+                chatBody.appendChild(newMessage);
+
+                // Clear the input field
+                document.getElementById("messageInput").value = "";
+
+                // Scroll to the bottom of the chat body
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+        }
+    </script>
+
+</body>
+</html>

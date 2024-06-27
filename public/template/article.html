@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Lilita+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,700;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+    </style>
+    <!-- Alpine js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="text-abu font-poppins">
+    <!-- Navigation -->
+    <nav x-data="{navOpen : true}" class="py-5 px-4">
+        <div class="container bg-white mx-auto lg:px-20">
+            <div class="flex justify-between">
+                <div class="flex items-center gap-3">
+                    <img src="./images/Nav Logo.svg">
+                    <a href="" class="font-rubik">Mind's</a>
+                </div>
+                <div class="items-center hidden md:block">
+                    <ul class="flex items-center gap-3">
+                        <li><a href="">Beranda</a></li>
+                        <li><a href="">Artikel</a></li>
+                        <li><a href="">Tidur</a></li>
+                        <li><a href="">Olahraga</a></li>
+                        <li><a href="">Stres</a></li>
+                    </ul>
+                </div>
+                <div class="hidden lg:block">
+                    <a class="bg-blue-700 px-3 py-3 rounded-full text-dark-white" href="">Konsultasi</a>
+                </div>
+                <img src="./images/toggle.svg" @click="navOpen = !navOpen" class="lg:hidden">
+            </div>
+
+        </div>
+        <!-- mobile navigation -->
+        <!-- z index buat fixed bottom -->
+        <div x-data="{open : true}" x-show="navOpen"
+            class="bg-dark-white fixed bottom-0 right-0 left-0 z-50 p-4 lg:hidden"
+            x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
+            x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90">
+            <ul class="flex justify-between">
+                <li>
+                    <a href="" class="flex justify-center flex-col items-center gap-1">
+                        <ion-icon name="home" class="text-2xl text-biru"></ion-icon>
+                        <span class="">Beranda</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="flex justify-center flex-col items-center gap-1">
+                        <ion-icon name="newspaper" class="text-2xl"></ion-icon>
+                        <span class="">Artikel</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="flex justify-center flex-col items-center gap-1">
+                        <ion-icon name="bed" class="text-2xl"></ion-icon>
+                        <span class="">Tidur</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="flex justify-center flex-col items-center gap-1">
+                        <ion-icon name="bicycle" class="text-2xl"></ion-icon>
+                        <span class="">Olahraga</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="flex justify-center flex-col items-center gap-1">
+                        <ion-icon name="sad" class="text-2xl"></ion-icon>
+                        <span class="">Stres</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <div class="container mx-auto px-4 py-4 lg:px-20 lg:py-28">
+            <div class="flex items-center justify-center">
+                <div class="w-3/4 lg:w-2/4">
+                    <h1 class="font-rubik font-medium text-4xl text-center mb-12 mt-12">Artikel</h1>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap -m-4">
+                <div class="p-4 w-full sm:w-1/2">
+                    <div class="h-full border-2 border-abu rounded-lg overflow-hidden">
+                        <img src="https://dummyimage.com/600x300/bababa/ffffff" alt="" class="h-48 object-cover w-full object-center">
+                        <div class="p-6 hover:bg-biru hover:text-white  transition duration-200 ease-in">
+                            <h1 class="font-rubik font-medium text-xl">Judul</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi enim id expedita nisi reiciendis a omnis perferendis laborum blanditiis molestiae. Ducimus praesentium distinctio qui aliquid maiores cum vel amet quisquam! lo</p>
+                        </div>  
+                    </div>
+                </div>
+                <div class="p-4 w-full sm:w-1/2">
+                    <div class="h-full border-2 border-abu rounded-lg overflow-hidden">
+                        <img src="https://dummyimage.com/600x300/bababa/ffffff" alt="" class="h-48 object-cover w-full object-center">
+                        <div class="p-6 hover:bg-biru hover:text-white  transition duration-200 ease-in">
+                            <h1 class="font-rubik font-medium text-xl">Judul</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi enim id expedita nisi reiciendis a omnis perferendis laborum blanditiis molestiae. Ducimus praesentium distinctio qui aliquid maiores cum vel amet quisquam! lo</p>
+                        </div>  
+                    </div>
+                </div>
+                <div class="p-4 w-full sm:w-1/2">
+                    <div class="h-full border-2 border-abu rounded-lg overflow-hidden">
+                        <img src="https://dummyimage.com/600x300/bababa/ffffff" alt="" class="h-48 object-cover w-full object-center">
+                        <div class="p-6 hover:bg-biru hover:text-white  transition duration-200 ease-in">
+                            <h1>test</h1>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer>
+        <div class="container mx-auto px-4 py-4 lg:px-20 lg:py-28 bg-biru z-50">
+            <div class="flex justify-center">
+                <h1 class="font-rubik text-dark-white">Nurdin</h1>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</body>
+
+</html>
